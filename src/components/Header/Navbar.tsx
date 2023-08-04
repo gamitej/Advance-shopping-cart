@@ -13,7 +13,7 @@ const Navbar: React.FC = () => {
   const { pathname: currentLocation } = useLocation();
 
   return (
-    <div className="h-[4rem] px-4 text-lg bg-slate-50 flex items-center border-b shadow-md justify-between">
+    <div className="h-[5rem] px-8 text-xl bg-slate-50 flex items-center border-b shadow-md justify-between">
       <ul className="flex gap-x-4">
         {headerLinkData.map(({ title, to }, idx) => (
           <Link
@@ -27,8 +27,19 @@ const Navbar: React.FC = () => {
           </Link>
         ))}
       </ul>
-      <p className="bg-blue-300 p-2 rounded-full cursor-pointer hover:bg-slate-200">
-        <ShoppingCartOutlinedIcon className="text-xl text-white" />
+      <p className="relative bg-blue-300 px-3 border-2 hover:border-blue-600 py-2 rounded-full cursor-pointer">
+        <ShoppingCartOutlinedIcon
+          className=" text-white"
+          style={{ fontSize: "1.5rem" }}
+        />
+        <span
+          className="absolute top-0 right-0 text-white text-[14px] bg-red-400 px-[6px] -py-[4px] text-center rounded-full"
+          style={{
+            transform: "translate(25%,-25%)",
+          }}
+        >
+          2
+        </span>
       </p>
     </div>
   );
