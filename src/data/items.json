@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "book",
+    "price": 10.99,
+    "imgUrl": "/public/images/book.png"
+  },
+  {
+    "id": 2,
+    "name": "chair",
+    "price": 40.99,
+    "imgUrl": "/public/images/chair.png"
+  },
+  {
+    "id": 3,
+    "name": "couch",
+    "price": 30.49,
+    "imgUrl": "/public/images/couch.png"
+  },
+  {
+    "id": 4,
+    "name": "iphone",
+    "price": 499.99,
+    "imgUrl": "/public/images/iphone.png"
+  },
+  {
+    "id": 5,
+    "name": "laptop",
+    "price": 1499,
+    "imgUrl": "/public/images/laptop.png"
+  },
+  {
+    "id": 6,
+    "name": "moniter",
+    "price": 990.99,
+    "imgUrl": "/public/images/moniter.png"
+  },
+  {
+    "id": 7,
+    "name": "table",
+    "price": 99.99,
+    "imgUrl": "/public/images/table.png"
+  },
+  {
+    "id": 8,
+    "name": "tablet",
+    "price": 1099.99,
+    "imgUrl": "/public/images/tablet.png"
+  },
+  {
+    "id": 9,
+    "name": "tv",
+    "price": 899.99,
+    "imgUrl": "/public/images/tv.png"
+  }
+]
