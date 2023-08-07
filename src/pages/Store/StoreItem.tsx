@@ -5,6 +5,8 @@ import { Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
+// context
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 interface StoreItemsProps {
   id: number;
@@ -14,8 +16,18 @@ interface StoreItemsProps {
 }
 
 const StoreItem = ({ id, name, imgUrl, price }: StoreItemsProps) => {
-  const quantity = 0;
+  const {
+    removeFromCart,
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+  } = useShoppingCart();
 
+  const quantity = getItemQuantity(id);
+
+  /**
+   * JSX
+   */
   return (
     <div
       key={id}
@@ -37,19 +49,32 @@ const StoreItem = ({ id, name, imgUrl, price }: StoreItemsProps) => {
       </div>
       <div className="flex justify-center items-center h-[15%]">
         {quantity === 0 ? (
-          <Button variant="contained" startIcon={<AddIcon />}>
+          <Button
+            variant="contained"
+            startIcon={<AddIcon />}
+            onClick={() => increaseCartQuantity(id)}
+          >
             Add to cart
           </Button>
         ) : (
           <div className="flex justify-center items-center gap-2">
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              onClick={() => decreaseCartQuantity(id)}
+            >
               <RemoveIcon />
             </Button>
             <p>{quantity} in cart</p>
-            <Button variant="contained">
+            <Button
+              variant="contained"
+              onClick={() => increaseCartQuantity(id)}
+            >
               <AddIcon />
             </Button>
-            <DeleteIcon className="text-red-500 cursor-pointer hover:text-red-400" />
+            <DeleteIcon
+              className="text-red-500 cursor-pointer hover:text-red-400"
+              onClick={() => removeFromCart(id)}
+            />
           </div>
         )}
       </div>

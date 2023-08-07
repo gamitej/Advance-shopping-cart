@@ -9,7 +9,13 @@ const Store = () => {
       </h3>
       <div className="grid grid-cols-12 gap-4">
         {storeItems.map(({ id, name, imgUrl, price }) => (
-          <StoreItem id={id} name={name} imgUrl={imgUrl} price={price} />
+          <StoreItem
+            id={id}
+            name={name}
+            imgUrl={imgUrl}
+            price={price}
+            key={id}
+          />
         ))}
       </div>
     </div>
