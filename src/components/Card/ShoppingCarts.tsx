@@ -1,13 +1,19 @@
 import React from "react";
+// comp
+import CartItemsComp from "./CartItemsComp";
+// context
 import { useShoppingCart } from "@/context/ShoppingCartContext";
-import { Box, SwipeableDrawer } from "@mui/material";
+// mui
+import { SwipeableDrawer } from "@mui/material";
+import { formatCurrency } from "@/utilities/formatCurreny";
+import StoreItem from "@/data/items.json";
 
 type ShoppingCartsProps = {
   anchor?: "right" | "left" | "top" | "bottom" | undefined;
 };
 
 const ShoppingCarts = ({ anchor = "right" }: ShoppingCartsProps) => {
-  const { isOpen, openCart, closeCart } = useShoppingCart();
+  const { isOpen, openCart, closeCart, cartItems } = useShoppingCart();
 
   return (
     <React.Fragment key={anchor}>
@@ -17,7 +23,7 @@ const ShoppingCarts = ({ anchor = "right" }: ShoppingCartsProps) => {
         onClose={closeCart}
         onOpen={openCart}
       >
-        <div className="w-[15rem]">
+        <div className="w-[30rem]">
           <div className="flex justify-between items-center p-2">
             <p className="text-lg font-semibold text-blue-400">Cart</p>
             <p
@@ -27,6 +33,36 @@ const ShoppingCarts = ({ anchor = "right" }: ShoppingCartsProps) => {
               Close
             </p>
           </div>
+          <br />
+          {cartItems.length > 0 &&
+            cartItems?.map((item) => (
+              <CartItemsComp
+                id={item.id}
+                quantity={item.quantity}
+                key={item.id}
+              />
+            ))}
+          {cartItems.length > 0 && (
+            <p className="float-right px-2">
+              <span className="text-xl font-semibold">Total</span>
+              <span className="ml-2">
+                {formatCurrency(
+                  cartItems.reduce((total, cartItem) => {
+                    const item = StoreItem.find(
+                      (idx) => idx.id === cartItem.id
+                    );
+                    return total + (item?.price || 0) * cartItem.quantity;
+                  }, 0)
+                )}
+              </span>
+            </p>
+          )}
+          {cartItems.length === 0 && (
+            <div className="w-full h-full text-2xl flex justify-center items-center">
+              {" "}
+              Empty Cart{" "}
+            </div>
+          )}
         </div>
       </SwipeableDrawer>
     </React.Fragment>
