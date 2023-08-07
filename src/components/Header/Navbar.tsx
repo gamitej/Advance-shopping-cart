@@ -12,7 +12,7 @@ const headerLinkData = [
 
 const Navbar: React.FC = () => {
   const { pathname: currentLocation } = useLocation();
-  const { isOpen, cartQuantity } = useShoppingCart();
+  const { cartQuantity, openCart } = useShoppingCart();
 
   return (
     <div className="h-[5rem] px-8 text-xl bg-slate-50 flex items-center border-b shadow-md justify-between">
@@ -29,7 +29,10 @@ const Navbar: React.FC = () => {
           </Link>
         ))}
       </ul>
-      <p className="relative bg-blue-300 px-3 border-2 hover:border-blue-600 py-2 rounded-full cursor-pointer">
+      <p
+        className="relative bg-blue-300 px-3 border-2 hover:border-blue-600 py-2 rounded-full cursor-pointer"
+        onClick={openCart}
+      >
         <ShoppingCartOutlinedIcon
           className=" text-white"
           style={{ fontSize: "1.5rem" }}

@@ -1,3 +1,4 @@
+import ShoppingCarts from "@/components/Card/ShoppingCarts";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 type ShoppingCartProviderProps = {
@@ -106,6 +107,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
       }}
     >
       {children}
+      <ShoppingCarts anchor="right" />
     </ShoppingCartContext.Provider>
   );
 }
