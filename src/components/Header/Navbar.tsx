@@ -2,6 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 // mui
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
+import { useShoppingCart } from "@/context/ShoppingCartContext";
 
 const headerLinkData = [
   { title: "Home", to: "/" },
@@ -11,6 +12,7 @@ const headerLinkData = [
 
 const Navbar: React.FC = () => {
   const { pathname: currentLocation } = useLocation();
+  const { isOpen, cartQuantity } = useShoppingCart();
 
   return (
     <div className="h-[5rem] px-8 text-xl bg-slate-50 flex items-center border-b shadow-md justify-between">
@@ -32,14 +34,16 @@ const Navbar: React.FC = () => {
           className=" text-white"
           style={{ fontSize: "1.5rem" }}
         />
-        <span
-          className="absolute top-0 right-0 text-white text-[14px] bg-red-400 px-[8px] -py-[2px] text-center rounded-full"
-          style={{
-            transform: "translate(25%,-25%)",
-          }}
-        >
-          2
-        </span>
+        {cartQuantity !== 0 && (
+          <span
+            className="absolute top-0 right-0 text-white text-[14px] bg-red-400 px-[8px] -py-[2px] text-center rounded-full"
+            style={{
+              transform: "translate(25%,-25%)",
+            }}
+          >
+            {cartQuantity}
+          </span>
+        )}
       </p>
     </div>
   );
