@@ -1,4 +1,5 @@
 import ShoppingCarts from "@/components/Card/ShoppingCarts";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { ReactNode, createContext, useContext, useState } from "react";
 
 type ShoppingCartProviderProps = {
@@ -33,7 +34,10 @@ export function useShoppingCart() {
 
 export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [cartItems, setCartItems] = useLocalStorage<CartItem[]>(
+    "shopping-cart",
+    []
+  );
 
   // ==================  EVENT_HANDLER =================
 
