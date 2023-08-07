@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   const { cartQuantity, openCart } = useShoppingCart();
 
   return (
-    <div className="h-[5rem] px-8 text-xl bg-slate-50 flex items-center border-b shadow-md justify-between">
+    <div className="h-[5rem] px-8 text-xl bg-slate-50 flex items-center border-b shadow-md justify-between top-0 sticky z-[99]">
       <ul className="flex gap-x-6">
         {headerLinkData.map(({ title, to }, idx) => (
           <Link
