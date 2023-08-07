@@ -24,7 +24,7 @@ const ShoppingCarts = ({ anchor = "right" }: ShoppingCartsProps) => {
         onOpen={openCart}
       >
         <div className="w-[30rem]">
-          <div className="flex justify-between items-center p-2">
+          <div className="flex justify-between items-center p-2 sticky top-0 z-[100]">
             <p className="text-lg font-semibold text-blue-400">Cart</p>
             <p
               className="cursor-pointer hover:bg-slate-200 p-2 rounded-lg text-sm"
@@ -58,7 +58,7 @@ const ShoppingCarts = ({ anchor = "right" }: ShoppingCartsProps) => {
             </p>
           )}
           {cartItems.length === 0 && (
-            <div className="w-full h-full text-2xl flex justify-center items-center">
+            <div className="w-full h-[70vh] text-2xl flex justify-center items-center">
               {" "}
               Empty Cart{" "}
             </div>
